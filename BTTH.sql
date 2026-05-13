@@ -2,17 +2,17 @@ CREATE DATABASE Hospital_DB;
 USE Hospital_DB;
 
 CREATE TABLE Patients (
-  Patient_ID     CHAR(5)      PRIMARY KEY,  
-  Full_Name      VARCHAR(100) NOT NULL,     
-  Admission_Time DATETIME     DEFAULT NOW()     
+  Patient_ID CHAR(5) PRIMARY KEY,  
+  Full_Name VARCHAR(100) NOT NULL,     
+  Admission_Time DATETIME DEFAULT NOW()     
 );
 
 CREATE TABLE Vitals_Logs (
-  Log_ID         INT          AUTO_INCREMENT PRIMARY KEY,
-  Patient_ID     CHAR(5),
-  Heart_Rate     INT          CHECK (Heart_Rate > 0),  
+  Log_ID INT AUTO_INCREMENT PRIMARY KEY,
+  Patient_ID CHAR(5),
+  Heart_Rate INT CHECK (Heart_Rate > 0),  
   Blood_Pressure VARCHAR(20),                         
-  Record_Time    DATETIME     DEFAULT NOW(),
+  Record_Time DATETIME DEFAULT NOW(),
   FOREIGN KEY (Patient_ID) REFERENCES Patients(Patient_ID)
 );
 
